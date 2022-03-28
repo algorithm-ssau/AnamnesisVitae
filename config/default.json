@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "oxxxxxxximiron)))",
+  "mongoURI": "mongodb+srv://admin:root@cluster0.ffidn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
