@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
+import {AuthContext} from "../context/AuthContext";
 
 // info: need to add 'disable' to checkboxes, 
 // add info from checkboxes to api request
 // chamge checkboxes colors
 
 export const AuthorizationPage = () => {
+    const auth = useContext(AuthContext)
     const message = useMessage()
     const {loading, error, request, clearError} = useHttp()
 
@@ -35,15 +37,14 @@ export const AuthorizationPage = () => {
         try {
             const data = await request("/api/auth/login", "POST", { ...form });
             message(data.message)
-            //auth.login(data.token, data.userId);
+            auth.login(data.token, data.userId);
         } catch (e) {}
     };
 
     const registerHandler = async () => {
         try {
             const data = await request("/api/auth/registration", "POST", { ...form });
-            message(data.message)
-            //auth.login(data.token, data.userId)
+            auth.login(data.token, data.userId)
         } catch (e) {}
     };
 
