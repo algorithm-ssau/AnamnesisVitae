@@ -1,45 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
 import {useHttp} from "../hooks/http.hook";
+import {useMessage} from "../hooks/message.hook";
 
 // info: need to add 'disable' to checkboxes, 
 // add info from checkboxes to api request
 // chamge checkboxes colors
 
 export const AuthorizationPage = () => {
+    const message = useMessage()
+    const {loading, error, request, clearError} = useHttp()
 
-      const {loading, error, request} = useHttp()
+    const [input, setInput] = useState({
+        email: "",
+        password: "",
+        accountType: ""
+    });
 
-      const [input, setInput] = useState({
-          email: "",
-          password: "",
-          accountType: ""
-      });
-    
-      const changeHandler = (event) => {
-          console.log(input);
-          setInput({ ...input, [event.target.name]: event.target.value });
-      };
-    
-      const changeType = (event) => {
-          console.log(input);
-          setInput({ ...input, accountType: event});
-      };
-    
-       const loginHandler = async () => {
-           try {
-             const data = await request("/api/auth/login", "POST", { ...form });
-             auth.login(data.token, data.userId);
-           } catch (e) {}
-         };
+    useEffect( () => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
 
-       const registerHandler = async () => {
-           try {
-             const data = await request("/api/auth/registration", "POST", { ...form });
-             //  auth.login(data.token, data.userId)
-           } catch (e) {}
-         };
-    
-      return (
+    const changeHandler = (event) => {
+        console.log(input);
+        setInput({ ...input, [event.target.name]: event.target.value });
+    };
+
+    const changeType = (event) => {
+        console.log(input);
+        setInput({ ...input, accountType: event});
+    };
+
+    const loginHandler = async () => {
+        try {
+            const data = await request("/api/auth/login", "POST", { ...form });
+            message(data.message)
+            //auth.login(data.token, data.userId);
+        } catch (e) {}
+    };
+
+    const registerHandler = async () => {
+        try {
+            const data = await request("/api/auth/registration", "POST", { ...form });
+            message(data.message)
+            //auth.login(data.token, data.userId)
+        } catch (e) {}
+    };
+
+    return (
         <div className="content-box">
           <div className="">
             <div className="">
