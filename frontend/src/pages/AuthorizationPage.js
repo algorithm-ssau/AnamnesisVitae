@@ -1,40 +1,43 @@
 import React, { useContext, useEffect, useState } from "react";
+import {useHttp} from "../hooks/http.hook";
 
 // info: need to add 'disable' to checkboxes, 
 // add info from checkboxes to api request
 // chamge checkboxes colors
 
 export const AuthorizationPage = () => {
- 
-    const [input, setInput] = useState({
-        email: "",
-        password: "",
-        accountType: ""
+
+      const {loading, error, request} = useHttp()
+
+      const [input, setInput] = useState({
+          email: "",
+          password: "",
+          accountType: ""
       });
     
       const changeHandler = (event) => {
-        console.log(input);
-        setInput({ ...input, [event.target.name]: event.target.value });
+          console.log(input);
+          setInput({ ...input, [event.target.name]: event.target.value });
       };
     
       const changeType = (event) => {
-        console.log(input);
-        setInput({ ...input, accountType: event});
+          console.log(input);
+          setInput({ ...input, accountType: event});
       };
     
-      // const loginHandler = async () => {
-      //     try {
-      //       const data = await request("/api/auth/login", "POST", { ...form });
-      //       auth.login(data.token, data.userId);
-      //     } catch (e) {}
-      //   };
-    
-      // const registerHandler = async () => {
-      //     try {
-      //       const data = await request("/api/auth/registration", "POST", { ...form });
-      //       //  auth.login(data.token, data.userId)
-      //     } catch (e) {}
-      //   };
+       const loginHandler = async () => {
+           try {
+             const data = await request("/api/auth/login", "POST", { ...form });
+             auth.login(data.token, data.userId);
+           } catch (e) {}
+         };
+
+       const registerHandler = async () => {
+           try {
+             const data = await request("/api/auth/registration", "POST", { ...form });
+             //  auth.login(data.token, data.userId)
+           } catch (e) {}
+         };
     
       return (
         <div className="content-box">
@@ -84,15 +87,15 @@ export const AuthorizationPage = () => {
             <div className="card-action">
               <button
                 className="button-enter"
-                //  disabled={loading}
-                // onClick={loginHandler}
+                disabled={loading}
+                onClick={loginHandler}
               >
                 Войти
               </button>
               <button
                 className="button-reg"
-                // onClick={registerHandler}
-                // disabled={loading}
+                onClick={registerHandler}
+                disabled={loading}
               >
                 Регистрация
               </button>
