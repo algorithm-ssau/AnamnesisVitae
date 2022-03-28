@@ -1,0 +1,172 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+
+body {
+  height: 100%;
+}
+
+.root {
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    67.3deg,
+    rgba(18, 194, 233, 0.49) 0.66%,
+    rgba(196, 113, 237, 0.71) 61.33%,
+    rgba(246, 79, 89, 0.73) 96%
+  );
+  width: 100%;
+  height: 100vh;
+}
+
+.content-box {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    109.41deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 254, 254, 0.3) 100%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(50px);
+  border-radius: 50px;
+  position: absolute;
+  bottom: 16vh;
+  left: 16vw;
+}
+
+.content-box-text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin-left: 5rem;
+  margin-top: 8.2rem;
+  color: #444473;
+}
+
+.input-block {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.input-field {
+  height: 2.4rem;
+  position: relative;
+  margin-top: 1rem;
+  width: 70%;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 0.1px solid #857da26d;
+}
+
+.card-action {
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  margin-top: 1.2rem;
+  color: #ffffff;
+}
+
+.button-enter {
+  height: 2.1rem;
+  width: 30%;
+  background: linear-gradient(90.17deg, #dc7dae 0.19%, #9873e0ad 99.77%);
+  border-radius: 5px;
+  color: white;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 25px;
+  border: none;
+}
+.button-enter:hover {
+  opacity: 0.8;
+}
+
+.rectangle-low {
+  position: absolute;
+  left: 0;
+  right: 55%;
+  top: 45.21%;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(21px);
+  -webkit-backdrop-filter: blur(41px);
+  backdrop-filter: blur(41px);
+  border-radius: 174px;
+}
+
+.button-reg {
+  background-color: transparent;
+  width: 30%;
+  height: 2.1rem;
+  border: 1px solid #5a467687;
+  border-radius: 5px;
+  color: #5a4676f7;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.button-reg:hover {
+  opacity: 0.8;
+}
+
+input.yellow-input:focus + label {
+  color: #516683cc !important;
+}
+
+.input-field > label:not(.label-icon).active {
+  transform: translateY(-22px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+.input-field > label {
+  color: #516683cc;
+  margin-left: 0.3rem;
+  font-weight: 500;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  cursor: text;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+  text-align: initial;
+}
+
+input:not([type]),
+input[type="text"]:not(.browser-default),
+input[type="password"]:not(.browser-default),
+input[type="email"]:not(.browser-default),
+input[type="url"]:not(.browser-default),
+input[type="time"]:not(.browser-default),
+input[type="date"]:not(.browser-default),
+input[type="datetime"]:not(.browser-default),
+input[type="datetime-local"]:not(.browser-default),
+input[type="tel"]:not(.browser-default),
+input[type="number"]:not(.browser-default),
+input[type="search"]:not(.browser-default),
+textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 96%;
+  font-size: 16px;
+  margin: -3px 0px 7px 9px;
+  padding: 0px;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: box-shadow 0.3s, border 0.3s;
+}
