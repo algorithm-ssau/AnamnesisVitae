@@ -1,33 +1,29 @@
-import React from "react"
-import {Redirect, Route, Switch} from 'react-router-dom'
-import {CreatePage} from "./pages/CreatePage";
-import {DoctorPage} from "./pages/DoctorPage";
-import {PatientPage} from "./pages/PatientPage";
-import {AuthorizationPage} from "./pages/AuthorizationPage";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { CreatePage } from "./pages/CreatePage";
+import { DoctorPage } from "./pages/DoctorPage";
+import { PatientPage } from "./pages/PatientPage";
+import { AuthorizationPage } from "./pages/AuthorizationPage";
 
-export const useRoutes = isAuthenticated => {
-    if (isAuthenticated) {
-        return (
-            <Switch>
-                <Route path="/create">
-                    <CreatePage/>
-                </Route>
-                <Route path="/doctor/:id">
-                    <DoctorPage/>
-                </Route>
-                <Route path="/patient/:id">
-                    <PatientPage/>
-                </Route>
-                <Redirect to="/create"/>
-            </Switch>
-        )
-    }
+//  Route.Redirect - старая технология
+
+export const useRoutes = (isAuthenticated) => {
+  console.log(isAuthenticated);
+  if (isAuthenticated) {
     return (
-        <Switch>
-            <Route path="/" exact>
-                <AuthorizationPage/>
-            </Route>
-            <Redirect to="/"/>
-        </Switch>
-    )
-}
+      <Routes>
+        <Route path="/create" element={<CreatePage />} />
+        <Route path="/doctor/:id" element={<DoctorPage />} />
+        <Route path="/patient/:id" element={<PatientPage />} />
+        <Route path="/" element={<Navigate replace to="/create/" />} />
+        {/* <Route.Redirect to="/create" element={<CreatePage/>}/> */}
+      </Routes>
+    );
+  }
+  return (
+    <Routes>
+      <Route path="/" exact element={<AuthorizationPage />} />
+      {/* <Route.Redirect to="/"/> */}
+    </Routes>
+  );
+};

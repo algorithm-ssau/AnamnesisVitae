@@ -16,7 +16,7 @@ async function start() {
             useNewURlParser: true,
             useUnifiedTopology: true
         })
-        app.listen(PORT, () => console.log('App has been started'))
+        app.listen(PORT,()=>console.log(`has been started...on ${PORT}`))
     } catch (e) {
         console.log('Server error', e.message)
         process.exit(1)
