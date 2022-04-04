@@ -28,14 +28,14 @@ export const AuthorizationPage = () => {
         setInput({ ...input, [event.target.name]: event.target.value });
     };
 
-    const changeType = (event) => {
-        console.log(input);
-        setInput({ ...input, accountType: event});
-    };
+    // const changeType = (event) => {
+    //     console.log(input);
+    //     setInput({ ...input, accountType: event});
+    // };
 
     const loginHandler = async () => {
         try {
-            const data = await request("/api/auth/login", "POST", { ...form });
+            const data = await request("/api/auth/login", "POST", { ...input });
             message(data.message)
             auth.login(data.token, data.userId);
         } catch (e) {}
@@ -43,7 +43,7 @@ export const AuthorizationPage = () => {
 
     const registerHandler = async () => {
         try {
-            const data = await request("/api/auth/registration", "POST", { ...form });
+            const data = await request("/api/auth/registration", "POST", { ...input });
             auth.login(data.token, data.userId)
         } catch (e) {}
     };

@@ -1,6 +1,5 @@
 import React from 'react'
 import 'materialize-css'
-import {BrowserRouter} from "react-router-dom";
 import {useRoutes} from "./routes";
 import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/AuthContext";
@@ -17,13 +16,13 @@ function App() {
             userId,
             isAuthenticated
         }}>
-            <BrowserRouter>
-                <div className="container">
+            <div className="back-test">
+                <div className="container background-test">
                     {
                         routes
                     }
                 </div>
-            </BrowserRouter>
+            </div>
         </AuthContext.Provider>
     )
 }
