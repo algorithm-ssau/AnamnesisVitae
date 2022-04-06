@@ -10,7 +10,7 @@ const router = Router()
 router.post(
     '/register',
     [
-        check('email', 'Некорректный email').isEmail(),
+        check('email', 'Некорректный email').normalizeEmail().isEmail(),
         check('password', 'Минимальная длина пароля 4 символа')
             .isLength({min: 4})
     ],
@@ -23,7 +23,7 @@ router.post(
                     message: 'Некорректные данные регистрации'
                 })
             }
-            const {email, password, isDoctor} = request.body
+            const {email, password, accountType} = request.body
 
             const candidate = await User.findOne({email})
 
@@ -32,7 +32,7 @@ router.post(
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({email, password: hashedPassword, isDoctor})
+            const user = new User({email, password: hashedPassword, accountType})
             await user.save()
 
             response.status(201).json({message: 'Пользователь создан'})

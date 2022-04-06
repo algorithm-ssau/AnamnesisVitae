@@ -15,7 +15,7 @@ export const AuthorizationPage = () => {
     const [input, setInput] = useState({
         email: "",
         password: "",
-        accountType: ""
+        accountType: true
     });
 
     useEffect( () => {
@@ -36,14 +36,14 @@ export const AuthorizationPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request("/api/auth/login", "POST", { ...input });
-            message(data.message)
             auth.login(data.token, data.userId);
         } catch (e) {}
     };
 
     const registerHandler = async () => {
         try {
-            const data = await request("/api/auth/registration", "POST", { ...input });
+            const data = await request("/api/auth/register", "POST", { ...input });
+            message(data.message)
             auth.login(data.token, data.userId)
         } catch (e) {}
     };
