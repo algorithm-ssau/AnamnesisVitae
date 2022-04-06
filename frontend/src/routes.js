@@ -12,17 +12,17 @@ export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
         return (
             <Routes>
-                <Route path="/create" element={<CreatePage />} />
-                <Route path="/doctor/:id" element={<DoctorPage />} />
-                <Route path="/patient/:id" element={<PatientPage />} />
-                <Route path="*" element={<Navigate replace to="/create" />} />
+                <Route path="/create" exact element={<CreatePage />} />
+                <Route path="/doctor" exact element={<DoctorPage />} />
+                <Route path="/patient" exact element={<PatientPage />} />
+                <Route path="/" element={<Navigate replace to="/create/" />} />
             </Routes>
         );
     }
     return (
         <Routes>
             <Route path="/" exact element={<AuthorizationPage />} />
-            <Route path="*" element={<Navigate replace to="/" />} />
+            <Route path="/" element={<Navigate replace to="/" />} />
         </Routes>
     );
 };
