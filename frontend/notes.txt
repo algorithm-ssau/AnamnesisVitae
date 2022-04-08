@@ -1,0 +1,8 @@
+<object
+          type="image/svg+xml"
+          data={LogoutI}
+          className="logout-icon"
+          onClick={logoutHandler}
+        >
+            lohout-label
+</object> 

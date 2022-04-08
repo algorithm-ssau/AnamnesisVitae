@@ -4,6 +4,20 @@ body {
   height: 100%;
 }
 
+.logout-component{
+  display: flex;
+  flex-direction: column;
+}
+
+.logout-icon{
+  position: absolute;
+  top:22px;
+  right: 22px;
+}
+.logout-icon:hover {
+  opacity: 0.4;
+}
+
 .root {
   flex-direction: column;
   justify-content: center;
@@ -157,16 +171,19 @@ input[type="tel"]:not(.browser-default),
 input[type="number"]:not(.browser-default),
 input[type="search"]:not(.browser-default),
 textarea.materialize-textarea {
-  background-color: transparent;
   border: none;
   border-radius: 0;
   outline: none;
-  height: 3rem;
-  width: 96%;
+  height: 2.4rem;
+  width: 100%;
   font-size: 16px;
-  margin: -3px 0px 7px 9px;
+  margin: -2px 0px 7px -1px;
   padding: 0px;
-  box-shadow: none;
-  box-sizing: content-box;
-  transition: box-shadow 0.3s, border 0.3s;
+  border-radius: 5px;
+  border: 0.1px solid #857da26d;
+}
+
+.input-field>input[type]:-webkit-autofill:not(.browser-default)+label, .input-field>input[type=date]:not(.browser-default)+label, .input-field>input[type=time]:not(.browser-default)+label {
+  transform: translateY(-24px) scale(0.8);
+  transform-origin: 0 0;
 }
