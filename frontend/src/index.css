@@ -21,11 +21,11 @@ body {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  max-height: 500px;
+  max-height: 80%;
   position: absolute;
-  top: 25%;
-  left:20%;
-  max-width: 60%;
+  left:12%;
+  max-width: 83%;
+
 }
 
 [type="checkbox"] + span:not(.lever) {
@@ -104,6 +104,22 @@ body {
   position: absolute;
   bottom: 16vh;
   left: 16vw;
+}
+
+.content-box-create-page {
+  width: 80%;
+  height: 80%;
+  background: linear-gradient(
+          109.41deg,
+          rgba(255, 255, 255, 0.18) 0%,
+          rgba(255, 254, 254, 0.3) 100%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(50px);
+  border-radius: 50px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 
 .content-box-text {
@@ -248,3 +264,54 @@ textarea.materialize-textarea {
   transform: translateY(-24px) scale(0.8);
   transform-origin: 0 0;
 }
+
+.navbar-vitae {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin: 0;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.navbar-vitae li {
+  float: left;
+  margin: 0 3%;
+}
+.navbar-vitae-a-passive {
+  display: block;
+  color: white;
+  font-size: 25px;
+  font-weight:bold;
+  font-family:Verdana, Geneva, sans-serif;
+}
+.navbar-vitae-a-active {
+  color: black;
+  font-size: 25px;
+  font-weight:bold;
+  font-family:Verdana, Geneva, sans-serif;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196, 113, 237, 0.71) rgba(196, 113, 237, 0.5);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 20px;
+  border: 2px solid rgba(196, 113, 237, 0.71);
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background: rgba(196, 113, 237, 0.5);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(196, 113, 237, 0.71);
+  border-radius: 20px;
+}
+
+
