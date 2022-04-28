@@ -265,6 +265,44 @@ textarea.materialize-textarea {
   transform-origin: 0 0;
 }
 
+.modal-container {
+  position: fixed;
+  z-index:2;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  opacity: 0;
+  pointer-events: none;
+  top: 40%;
+  left: 40%;
+  height: 200px;
+  width: 500px;
+  padding: 10px;
+  border-radius: 50px;
+  margin: 0;
+  background: linear-gradient(
+    109.41deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 254, 254, 0.3) 100%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(50px);
+}
+
+.modal-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.account-type {
+    padding: 10px;
+    align-content: flex-end;
+    align-self: end;
+}
+
+.modal-open {
+  display: none;
+}
+
 .navbar-vitae {
   display: flex;
   list-style-type: none;
@@ -313,5 +351,3 @@ textarea.materialize-textarea {
   background-color: rgba(196, 113, 237, 0.71);
   border-radius: 20px;
 }
-
-

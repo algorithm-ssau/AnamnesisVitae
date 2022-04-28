@@ -11,6 +11,20 @@ export const AuthorizationPage = () => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const {loading, error, request, clearError} = useHttp()
+    const openTypeDialog = document.getElementById("open-type-dialog")
+    const modalContainer = document.getElementById("modal-container")
+    const registerButton = document.getElementById("button-reg")
+    const contentBox= document.getElementById("content-box");
+
+    openTypeDialog && openTypeDialog.addEventListener("click", () => {
+        modalContainer.classList.add("show")
+        contentBox.classList.add("modal-open")
+    })
+
+    registerButton && registerButton.addEventListener("click", ()=> {
+        modalContainer.classList.remove("show")
+        contentBox.classList.remove("modal-open")
+    })
 
     const [input, setInput] = useState({
         email: "",
@@ -23,15 +37,12 @@ export const AuthorizationPage = () => {
         clearError()
     }, [error, message, clearError])
 
+    const[checked, setChecked] = useState(true)
+
     const changeHandler = (event) => {
         console.log(input);
         setInput({ ...input, [event.target.name]: event.target.value });
     };
-
-    // const changeType = (event) => {
-    //     console.log(input);
-    //     setInput({ ...input, accountType: event});
-    // };
 
     const loginHandler = async () => {
         try {
@@ -49,7 +60,39 @@ export const AuthorizationPage = () => {
     };
 
     return (
-        <div className="content-box">
+        <div id="background">
+            <div
+              className="modal-container"
+              id="modal-container">
+              <h3>Выберите тип аккаунта</h3>
+              <div className="account-type">
+                <label>
+                  <input type="checkbox" className="filled-in" checked={checked===false} onChange={async () => {
+                      setChecked(false)
+                      input.accountType = false
+                      await changeHandler
+                  }}/>
+                    <span>Пациент</span>
+                </label>
+                  <label>
+                    <input type="checkbox" className="filled-in" checked={checked===true} onChange={async () => {
+                      setChecked(true)
+                      input.accountType = true
+                      await changeHandler
+                  }}/>
+                      <span>Врач</span>
+                  </label>
+                </div>
+                <button
+                    id="button-reg"
+                    className="button-reg"
+                    onClick={registerHandler}
+                    disabled={loading}
+                >
+                    Регистрация
+                </button>
+            </div>
+        <div id="content-box" className="content-box">
           <div className="">
             <div className="">
               <span className="content-box-text">
@@ -68,7 +111,6 @@ export const AuthorizationPage = () => {
                   />
                   <label htmlFor="email">Email</label>
                 </div>
-    
                 <div className="input-field">
                   <input
                     placeholder=""
@@ -82,16 +124,6 @@ export const AuthorizationPage = () => {
                   <label htmlFor="email">Пароль</label>
                 </div>
               </div>
-              {/* <div className="account-type">
-                <label>
-                  <input type="checkbox" class="filled-in" checked="checked" />
-                  <span>Пациент</span>
-                </label>
-                <label>
-                  <input type="checkbox" class="filled-in" checked="checked" />
-                  <span>Врач</span>
-                </label>
-              </div> */}
             </div>
             <div className="card-action">
               <button
@@ -101,15 +133,18 @@ export const AuthorizationPage = () => {
               >
                 Войти
               </button>
-              <button
-                className="button-reg"
-                onClick={registerHandler}
-                disabled={loading}
-              >
-                Регистрация
-              </button>
+                <button
+                    id="open-type-dialog"
+                    className="button-reg"
+                    disabled={loading}
+                >
+                    Регистрация
+                </button>
             </div>
           </div>
         </div>
-      );
+        </div>
+
+
+    );
 };
