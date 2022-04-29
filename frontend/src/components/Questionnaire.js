@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
+import {useHttp} from "../hooks/http.hook";
 
 export const questions = [
   {
@@ -48,8 +49,22 @@ export const questions = [
   },
 ];
 
-export const Questionnaire = () => {
+export const Questionnaire = (props) => {
+  const {auth, history} = props
+  const {request} = useHttp()
   let answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  const setAnswersHendler = async () => {
+      try {
+        const data = await request('/api/auth/finish', 'POST', {from: answers.toString()}, 
+        {Authorization: `Bearer ${auth.token}`})
+        console.log(data)
+        console.log("Тестовая переадресация при внесении ответов в бд");
+        history('/patient')
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
   const InputField = (val) => {
     const [localAnswer, setLocalAnswer] = useState(0);
@@ -58,10 +73,6 @@ export const Questionnaire = () => {
       answers = answers.map((el, index) => {
         return val.index === index ? localAnswer : el;
       });
-      //console.log(answers);
-
-      // NOTE: оставлю лог для контроля значений в массиве перед записью в бд
-      // надо юудет проверить, не циклит ли useState:если да - переделать переменную в Dictionary
     }, [localAnswer, val.index]);
 
     const { question, answer } = val.question;
@@ -113,6 +124,9 @@ export const Questionnaire = () => {
       {questions.map((q, index) => (
         <InputField question={q} index={index} key={index} />
       ))}
+      <button onClick={setAnswersHendler}
+    >test</button>
     </div>
+    
   );
 };
