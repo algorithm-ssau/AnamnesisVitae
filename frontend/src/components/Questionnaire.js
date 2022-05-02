@@ -1,5 +1,5 @@
-import React, { useEffect, useState} from "react";
-import {useHttp} from "../hooks/http.hook";
+import React, { useEffect, useState } from "react";
+import { useHttp } from "../hooks/http.hook";
 
 export const questions = [
   {
@@ -50,21 +50,25 @@ export const questions = [
 ];
 
 export const Questionnaire = (props) => {
-  const {auth, history} = props
-  const {request} = useHttp()
+  const { auth, history } = props;
+  const { request } = useHttp();
   let answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   const setAnswersHendler = async () => {
-      try {
-        const data = await request('/api/auth/finish', 'POST', {from: answers.toString()}, 
-        {Authorization: `Bearer ${auth.token}`})
-        console.log(data)
-        console.log("Тестовая переадресация при внесении ответов в бд");
-        history('/patient')
-      } catch (error) {
-        console.log(error)
-      }
-  }
+    try {
+      const data = await request(
+        "/api/auth/finish",
+        "POST",
+        { from: answers.toString() },
+        { Authorization: `Bearer ${auth.token}` }
+      );
+      console.log(data);
+      console.log("Тестовая переадресация при внесении ответов в бд");
+      history("/patient");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const InputField = (val) => {
     const [localAnswer, setLocalAnswer] = useState(0);
@@ -120,13 +124,13 @@ export const Questionnaire = (props) => {
   };
 
   return (
-    <div className="questionnaire-component">
-      {questions.map((q, index) => (
-        <InputField question={q} index={index} key={index} />
-      ))}
-      <button onClick={setAnswersHendler}
-    >test</button>
+    <div className="questionnaire-block">
+      <div className="questionnaire-component">
+        {questions.map((q, index) => (
+          <InputField question={q} index={index} key={index} />
+        ))}
+      </div>
+      <button className="enter-button" onClick={setAnswersHendler}>Подтвердить</button>
     </div>
-    
   );
 };

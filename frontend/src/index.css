@@ -17,14 +17,43 @@ body {
   font-family: system-ui;
 }
 
+.questionnaire-block{
+  display: flex;
+  flex-direction: column;
+}
+
+.enter-button{
+  position: absolute;
+    top: 85%;
+    right: 13%;
+    height: 48px;
+    width: 150px;
+    color: rgb(104 49 127);
+    font-size: 18px;
+    border: 2px solid;
+    border-color: rgb(167 100 194);
+    background: none;
+    border-radius: 10px;
+}
+
+.enter-button:hover {
+  opacity: 0.6;
+}
+
+.enter-button:focus{
+  background-color:transparent;
+  color: rgb(37, 32, 117);
+  border-color: rgb(37, 32, 117);
+}
+
 .questionnaire-component {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  max-height: 80%;
+  max-height: 70%;
   position: absolute;
-  left:12%;
-  max-width: 83%;
+  left: 12%;
+  max-width: 75%;
 
 }
 
