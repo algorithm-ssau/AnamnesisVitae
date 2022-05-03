@@ -50,7 +50,7 @@ export const questions = [
 ];
 
 export const Questionnaire = (props) => {
-  const { auth, history } = props;
+  const { auth, history, setPassed } = props;
   const { request } = useHttp();
   let answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -64,7 +64,7 @@ export const Questionnaire = (props) => {
       );
       console.log(data);
       console.log("Тестовая переадресация при внесении ответов в бд");
-      history("/patient");
+      setPassed(true);
     } catch (error) {
       console.log(error);
     }

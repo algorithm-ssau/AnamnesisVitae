@@ -17,7 +17,8 @@ function App() {
             userId,
             isAuthenticated
         }}>
-            { isAuthenticated && <Logout/>}
+            {/*{ isAuthenticated && <Logout/>}*/}
+            { isAuthenticated }
             <div className="back-test">
                 <div className="container background-test">
                     {

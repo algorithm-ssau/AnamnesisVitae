@@ -41,7 +41,7 @@ body {
 .enter-button{
   position: absolute;
     top: 85%;
-    right: 13%;
+    right: 20%;
     height: 48px;
     width: 150px;
     color: rgb(104 49 127);
@@ -360,14 +360,25 @@ textarea.materialize-textarea {
   float: left;
   margin: 0 3%;
 }
-.navbar-vitae-a-passive {
+.navbar-vitae-a-white-active {
   display: block;
   color: white;
   font-size: 25px;
   font-weight:bold;
   font-family:Verdana, Geneva, sans-serif;
 }
-.navbar-vitae-a-active {
+
+.navbar-vitae-a-grey-passive {
+  pointer-events: none;
+  display: block;
+  color: #555555;
+  font-size: 25px;
+  font-weight:bold;
+  font-family:Verdana, Geneva, sans-serif;
+}
+
+.navbar-vitae-a-black-passive {
+  pointer-events: none;
   color: black;
   font-size: 25px;
   font-weight:bold;

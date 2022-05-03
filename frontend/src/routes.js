@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { CreatePage } from "./pages/CreatePage";
 import { DoctorPage } from "./pages/DoctorPage";
 import { PatientPage } from "./pages/PatientPage";
 import { AuthorizationPage } from "./pages/AuthorizationPage";
@@ -12,10 +11,9 @@ export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
         return (
             <Routes>
-                <Route path="/create" exact element={<CreatePage />} />
                 <Route path="/doctor" exact element={<DoctorPage />} />
                 <Route path="/patient" exact element={<PatientPage />} />
-                <Route path="/" element={<Navigate replace to="/create/" />} />
+                <Route path="/" element={<Navigate replace to="/patient/" />} />
             </Routes>
         );
     }
