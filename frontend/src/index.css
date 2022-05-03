@@ -5,6 +5,22 @@ body {
   overflow-y: hidden;
   padding-right: 1px;
 }
+.application-help {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  left:10%;
+  top: 12%;
+
+}
+
+.application-help-text {
+  font-size: 18px;
+  font-family: system-ui;
+}
 
 .answers {
   display: flex;
