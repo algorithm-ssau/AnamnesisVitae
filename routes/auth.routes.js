@@ -137,4 +137,15 @@ router.post('/login',
         }
       });
 
+      router.post("/isAnswersFilled",auth, async (req, res) => {
+        try {
+          const user = await User.findById(req.user.userId);
+          console.log(user)
+
+          res.send({  isFilled :user.answers !==' ' });
+        } catch (e) {
+          res.status(500).json({ message: "Что-то пошло не так" });
+        }
+      });
+
 module.exports = router
