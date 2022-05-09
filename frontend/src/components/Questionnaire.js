@@ -54,7 +54,7 @@ export const Questionnaire = (props) => {
   const { request } = useHttp();
   let answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  const setAnswersHendler = async () => {
+  const setAnswersHandler = async () => {
     try {
       const data = await request(
         "/api/auth/finish",
@@ -64,7 +64,7 @@ export const Questionnaire = (props) => {
       );
       console.log(data);
       console.log("Тестовая переадресация при внесении ответов в бд");
-      setPassed(true);
+      history('/')
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +130,7 @@ export const Questionnaire = (props) => {
           <InputField question={q} index={index} key={index} />
         ))}
       </div>
-      <button className="enter-button" onClick={setAnswersHendler}>Подтвердить</button>
+      <button className="enter-button" onClick={setAnswersHandler}>Подтвердить</button>
     </div>
   );
 };

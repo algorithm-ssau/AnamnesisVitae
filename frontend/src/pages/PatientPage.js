@@ -1,18 +1,44 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 import {Questionnaire} from "../components/Questionnaire";
 import {ApplicationHelp} from "../components/ApplicationHelp";
 import {LogoutText} from "../components/LogoutText";
+import { useHttp } from "../hooks/http.hook";
 
 export const PatientPage = () => {
     const history = useNavigate();
     const auth = useContext(AuthContext)
+    const { request } = useHttp();
+
+    let isAnswersFilled = false;
+    const isAnswersFilledHandler = async () => {
+        let isAnswersFilledRequest = false
+         try {
+            const isAnswersFilledRequest = await request(
+                "/api/auth/isAnswersFilled",
+                "POST",
+                {},
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            isAnswersFilled = isAnswersFilledRequest.isFilled;
+            console.log(isAnswersFilledRequest.isFilled)
+        } catch (error) {
+            console.log(error);
+        }
+        return isAnswersFilledRequest
+     }
     const [window,setWindow] = useState(1)
     const [passed, setPassed] = useState(false)
-    // Проверка на то прошел ли пользователь уже эти вопросы
-    // Взять инфу из бд
-    // Надо сделать
+
+    useEffect(()=> {
+        const result = isAnswersFilledHandler()
+        result.then(()=> {
+            if(passed !== isAnswersFilled) {
+                setPassed(isAnswersFilled)
+            }
+        })
+    },[passed])
 
     switch (window) {
         case 1:
