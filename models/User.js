@@ -6,7 +6,8 @@ const schema = new Schema({
     accountType: {type: Boolean, required: true},
     //answers: [{type: Types.ObjectId, ref: 'Answers'}]
     answers: {type: String, required: false },
-    answerTime: {type: Date, required: false }
+    answerTime: {type: Date, required: false },
+    name: {type: String, required: false }
 })
 
 module.exports = model('User', schema)

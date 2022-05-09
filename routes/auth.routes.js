@@ -171,4 +171,33 @@ router.post('/login',
         }
       });
 
+
+    router.post("/profile", auth, async (req, res) => {
+        try {
+            const { name } = req.body;
+
+            const user = await User.findById(req.user.userId);
+
+            if (!user || user.accountType === true) {
+                return response
+                    .status(400)
+                    .json({ message: "Ошибка входа/типа аккаунта" });
+            }
+
+            User.findByIdAndUpdate(
+                req.user.userId,
+                {
+                    name: name
+                },
+                function (err, result) {
+                    if (err) return console.log(err);
+                }
+            );
+            console.log(user)
+
+            res.json({ name: name, message: "Данные изменены успешно" });
+        } catch (e) {
+            res.status(500).json({ message: "Что-то пошло не так" });
+        }
+    });
 module.exports = router

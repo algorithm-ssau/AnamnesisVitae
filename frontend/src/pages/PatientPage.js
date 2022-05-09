@@ -5,6 +5,7 @@ import {Questionnaire} from "../components/Questionnaire";
 import {ApplicationHelp} from "../components/ApplicationHelp";
 import {LogoutText} from "../components/LogoutText";
 import { useHttp } from "../hooks/http.hook";
+import {Profile} from "../components/Profile";
 
 export const PatientPage = () => {
     const history = useNavigate();
@@ -63,6 +64,7 @@ export const PatientPage = () => {
                             <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
                             <li><LogoutText/></li>
                         </ul>
+                        <Profile auth={auth} history={history}/>
                     </div>
                 )
             }
@@ -77,6 +79,7 @@ export const PatientPage = () => {
                             <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
                             <li><LogoutText/></li>
                         </ul>
+                        <Profile auth={auth} history={history}/>
                     </div>
                 )
             } else {
@@ -88,6 +91,7 @@ export const PatientPage = () => {
                             <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
                             <li><LogoutText/></li>
                         </ul>
+                        <Profile auth={auth} history={history}/>
                     </div>
                 )
             }
