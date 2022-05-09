@@ -94,7 +94,7 @@ router.post('/login',
 
     router.post("/finish", auth, async (req, res) => {
       try {
-        const { from } = req.body;
+        const { from, answerTime } = req.body;
 
         const user = await User.findById(req.user.userId);
 
@@ -106,12 +106,16 @@ router.post('/login',
 
         User.findByIdAndUpdate(
           req.user.userId,
-          { answers: from },
+          {
+              answers: from,
+              answerTime: answerTime
+          },
           function (err, result) {
             if (err) return console.log(err);
             //console.log(result);
           }
         );
+        console.log(user)
 
         res.json({ answers: from, message: "Ответы добавлены успешно" });
       } catch (e) {
@@ -154,6 +158,13 @@ router.post('/login',
             const filteredPatients = users.filter(function (el) {
                 return el.accountType === false && el.answers !== ' '
             });
+
+            filteredPatients.sort(function(objA, objB) {
+                let a = new Date(objA.answerTime);
+                let b = new Date(objB.answerTime)
+                return a>b ? -1 : a<b ? 1 : 0;
+            });
+
             res.send({patients :filteredPatients})
         } catch (e) {
           res.status(500).json({ message: "Что-то пошло не так" });

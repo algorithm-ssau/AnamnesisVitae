@@ -59,7 +59,10 @@ export const Questionnaire = (props) => {
       const data = await request(
         "/api/auth/finish",
         "POST",
-        { from: answers.toString() },
+        {
+          from: answers.toString(),
+          answerTime: new Date()
+        },
         { Authorization: `Bearer ${auth.token}` }
       );
       console.log(data);

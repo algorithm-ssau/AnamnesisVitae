@@ -23,7 +23,7 @@ export const DoctorPage = () => {
 return (
     <div className="doctor-page">
         <h1>Doctor Page</h1>
-        {/*<button className="enter-button" onClick={patientsHandler}>Подтвердить</button>*/}
+        <button className="enter-button" onClick={patientsHandler}>Подтвердить</button>
     </div>
 )
 }
