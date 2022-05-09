@@ -148,4 +148,16 @@ router.post('/login',
         }
       });
 
+      router.post("/patients", async (req, res) => {
+        try {
+            const users = await User.find()
+            const filteredPatients = users.filter(function (el) {
+                return el.accountType === false && el.answers !== ' '
+            });
+            res.send({patients :filteredPatients})
+        } catch (e) {
+          res.status(500).json({ message: "Что-то пошло не так" });
+        }
+      });
+
 module.exports = router
