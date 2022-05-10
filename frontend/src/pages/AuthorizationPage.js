@@ -47,7 +47,7 @@ export const AuthorizationPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request("/api/auth/login", "POST", { ...input });
-            auth.login(data.token, data.userId);
+            auth.login(data.token, data.userId, data.accountType);
         } catch (e) {}
     };
 

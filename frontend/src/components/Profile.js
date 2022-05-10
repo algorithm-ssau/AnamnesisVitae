@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useHttp} from "../hooks/http.hook";
+import {useMessage} from "../hooks/message.hook";
 
 
 
@@ -7,6 +8,7 @@ export const Profile = props => {
 
     const { auth, history } = props;
     const { request } = useHttp();
+    const message = useMessage()
 
     const [input, setInput] = useState({
         firstName: "",
@@ -27,7 +29,7 @@ export const Profile = props => {
                 {name: input.firstName + " " + input.secondName},
                 { Authorization: `Bearer ${auth.token}` }
             );
-            console.log(data);
+            message(data.message);
         } catch (error) {
             console.log(error);
         }

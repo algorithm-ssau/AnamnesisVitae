@@ -85,7 +85,8 @@ router.post('/login',
                 {expiresIn: '1h'}
             )
 
-            response.json({token, UserId: user.id})
+            response.json({token, userId: user.id, accountType: user.accountType})
+
 
         } catch (e) {
             response.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -200,4 +201,7 @@ router.post('/login',
             res.status(500).json({ message: "Что-то пошло не так" });
         }
     });
+
+
+
 module.exports = router
