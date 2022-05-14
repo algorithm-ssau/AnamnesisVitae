@@ -98,13 +98,14 @@ router.post('/login',
         const { from, answerTime } = req.body;
 
         const user = await User.findById(req.user.userId);
-
+        console.log(req.user)
+        
         if (!user || user.accountType === true) {
           return response
             .status(400)
             .json({ message: "Ошибка входа/типа аккаунта" });
         }
-
+          
         User.findByIdAndUpdate(
           req.user.userId,
           {
@@ -123,24 +124,7 @@ router.post('/login',
         res.status(500).json({ message: "Что-то пошло не так" });
       }
     });
-
-      router.get("/results", auth, async (req, res) => {
-        try {
-          const { email } = req.body;
-
-          const user = await User.findOne({ email });
-
-          if (!user || user.accountType === true) {
-            return response
-              .status(400)
-              .json({ message: "Ошибка входа/типа аккаунта" });
-          }
-
-          res.json({ answers: user.answers });
-        } catch (e) {
-          res.status(500).json({ message: "Что-то пошло не так" });
-        }
-      });
+    
 
       router.post("/isAnswersFilled",auth, async (req, res) => {
         try {
@@ -157,7 +141,7 @@ router.post('/login',
         try {
             const users = await User.find()
             const filteredPatients = users.filter(function (el) {
-                return el.accountType === false && el.answers !== ' '
+                return el.accountType === false && (!!el.answers && el.answers !== ' ')
             });
 
             filteredPatients.sort(function(objA, objB) {
@@ -205,3 +189,9 @@ router.post('/login',
 
 
 module.exports = router
+
+
+// на случай очистки БД:
+// User.deleteMany({accountType: false}, function(err, result){
+            //     console.log(User.find());
+            // });

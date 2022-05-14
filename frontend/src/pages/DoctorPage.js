@@ -1,29 +1,92 @@
-import React, {useContext} from "react";
-import {useHttp} from "../hooks/http.hook";
+import React, {useContext, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
+import { ResultsView } from "../components/ResultsView";
+import {ApplicationHelp} from "../components/ApplicationHelp";
+import { LogoutText } from "../components/LogoutText";
+import { useHttp } from "../hooks/http.hook";
+
+const defaulrPatientList = [
+    {
+      name: " ",
+      answers: [0,0,0,0,0],
+    },
+  ]
 
 export const DoctorPage = () => {
+const auth = useContext(AuthContext)
+    const [window, setWindow] = useState(1)
+    const [patientList, setPatientList] = useState(null)
     const { request } = useHttp();
-    const auth = useContext(AuthContext)
-
-    const patientsHandler = async () => {
-        try {
-            const patientsRequest = await request(
-                "/api/auth/patients",
-                "POST",
-                {},
-                { Authorization: `Bearer ${auth.token}` }
-                );
-            console.log(patientsRequest.patients)
-        } catch (error) {
-            console.log(error);
+    const getPatients = async () => {
+    try {
+        const patients = await request(
+            "/api/auth/patients",
+            "POST",
+            {},
+            { Authorization: `Bearer ${auth.token}` }
+        );
+        return patients
+    } catch (error) {
+        return null
+    }
+    }
+    
+    useEffect(() => {
+        if (window === 1)
+        {
+            getPatients().then((v) => {
+               
+                if (v!==null)  setPatientList(v)
+            })
         }
-     }
+    }, [window])
 
-return (
-    <div className="doctor-page">
-        <h1>Doctor Page</h1>
-        <button className="enter-button" onClick={patientsHandler}>Подтвердить</button>
-    </div>
-)
+switch (window) {
+    case 1:
+            return (
+                <div className="content-box-create-page">
+                    <ul className="navbar-vitae">
+                        <li><a onClick={() => {setWindow(1)}} className="navbar-vitae-a-black-passive">Результаты</a></li>
+                        <li><a onClick={() => {setWindow(2)}} className="navbar-vitae-a-white-active">Профиль</a></li>
+                        <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
+                        <li><LogoutText/></li>
+                    </ul>
+                    { patientList && <ResultsView patients={patientList}/> }
+                </div>
+            )
+        break;
+    case 2:
+       
+            return (
+                <div className="content-box-create-page">
+                    <ul className="navbar-vitae">
+                        <li><a onClick={() => {setWindow(1)}} className="navbar-vitae-a-white-active">Результаты</a></li>
+                        <li><a onClick={() => {setWindow(2)}} className="navbar-vitae-a-black-passive">Профиль</a></li>
+                        <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
+                        <li><LogoutText/></li>
+                    </ul>
+                </div>
+            )
+       
+        break;
+    case 3:
+       
+            return (
+                <div className="content-box-create-page">
+                    <ul className="navbar-vitae">
+                        <li><a onClick={() => {setWindow(1)}} className="navbar-vitae-a-white-active">Результаты</a></li>
+                        <li><a onClick={() => {setWindow(2)}} className="navbar-vitae-a-white-active">Профиль</a></li>
+                        <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-black-passive">Справка</a></li>
+                        <li><LogoutText/></li>
+                    </ul>
+                    <ApplicationHelp/>
+                </div>
+            )
+       
+        break;
 }
+}
+
+       
+ 

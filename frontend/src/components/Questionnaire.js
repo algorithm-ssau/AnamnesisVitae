@@ -50,7 +50,7 @@ export const questions = [
 ];
 
 export const Questionnaire = (props) => {
-  const { auth, history, setPassed } = props;
+  const { auth, history, passed } = props;
   const { request } = useHttp();
   let answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -68,6 +68,7 @@ export const Questionnaire = (props) => {
       console.log(data);
       console.log("Тестовая переадресация при внесении ответов в бд");
       history('/')
+        history('/')
     } catch (error) {
       console.log(error);
     }
@@ -126,14 +127,18 @@ export const Questionnaire = (props) => {
     );
   };
 
-  return (
-    <div className="questionnaire-block">
-      <div className="questionnaire-component">
-        {questions.map((q, index) => (
-          <InputField question={q} index={index} key={index} />
-        ))}
-      </div>
-      <button className="enter-button" onClick={setAnswersHandler}>Подтвердить</button>
+  return (<>
+    
+    {(!passed) && ( <div className="questionnaire-block">
+      
+    <div className="questionnaire-component">
+      {questions.map((q, index) => (
+        <InputField question={q} index={index} key={index} />
+      ))}
     </div>
+    <button className="enter-button" onClick={setAnswersHandler}>Подтвердить</button>
+    </div>)
+  }
+   </>
   );
 };

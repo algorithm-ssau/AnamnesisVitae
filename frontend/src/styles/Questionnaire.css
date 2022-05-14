@@ -1,0 +1,57 @@
+
+
+/* Questionnaire*/
+.enter-button:hover {
+    opacity: 0.6;
+  }
+  
+  .enter-button:focus {
+    background-color: transparent;
+    color: rgb(37, 32, 117);
+    border-color: rgb(37, 32, 117);
+  }
+  
+  .questionnaire-component {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 70%;
+    position: absolute;
+    left: 12%;
+    max-width: 75%;
+  }
+  
+  [type="checkbox"] + span:not(.lever) {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 26px;
+    line-height: 18px;
+    font-size: 16px;
+    color: #363636;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  [type="checkbox"].filled-in:checked + span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #363636;
+    background-color: inherit;
+    z-index: 0;
+  }
+  
+  [type="checkbox"].filled-in:checked + span:not(.lever):before {
+    top: 0;
+    left: 1px;
+    width: 8px;
+    height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #14152e;
+    border-bottom: 2px solid #14152e;
+    transform: rotateZ(37deg);
+    transform-origin: 100% 100%;
+  }

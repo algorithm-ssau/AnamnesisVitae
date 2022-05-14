@@ -9,7 +9,7 @@ import { AuthorizationPage } from "./pages/AuthorizationPage";
 export const useRoutes = (isAuthenticated, accountType) => {
     if (isAuthenticated) {
         console.log("accountType" ,accountType, "isAuthenticated" ,isAuthenticated)
-        if (accountType == true) {
+        if (accountType === true) {
             return (
                 <Routes>
                     <Route path="/doctor" exact element={<DoctorPage />} />
@@ -17,7 +17,7 @@ export const useRoutes = (isAuthenticated, accountType) => {
                   {/*  <Route path="/patient" element={<Navigate replace to="/doctor/" />} />*/}
                 </Routes>
             );
-        } else  if (accountType == false) {
+        } else  if (accountType === false) {
             return (
                 <Routes>
                     <Route path="/patient" exact element={<PatientPage />} />

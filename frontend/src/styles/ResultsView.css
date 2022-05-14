@@ -1,0 +1,191 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+/* ResultsView*/
+
+.results-view-button {
+  margin-right: 26px;
+    height: 48px;
+    width: 150px;
+    color: rgb(104 49 127);
+    font-size: 18px;
+    border: 2px solid;
+    border-color: rgb(167 100 194);
+    background: none;
+    border-radius: 10px;
+  }
+  
+  .patient-num{
+    border: 2px solid #a66aa78c;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .choosen-patient-row{
+    background: #ffffffc2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 16%;
+    font-size: 18px;
+      border: 2px solid #9370db4d;
+      height: 84px;
+  }
+  .choosen-patient{
+    color: #0b034b9c;
+    position: fixed;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, sans-serif;
+    top: 16%;
+    left: 12%;
+  }
+  .patient-row {
+    width: 99%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    border-bottom: none;
+    font-size: 18px;
+  }
+  .patient-name{
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .patient-row:hover {
+    opacity: 0.6;
+  }
+  .patient-selection {
+    position: absolute;
+    right: 20px;
+  }
+  .patient-out{
+    position: absolute;
+    right: 12%;
+    bottom: 10%
+  }
+  .patient-status{
+    position: absolute;
+    right: 30px;
+  }
+  .patient-num{
+    position: absolute;
+    left: 20px;
+  }
+  .row-elements{
+    margin-left: 20%;
+  }
+  .results-list{
+    display: flex;
+      flex-direction: column;
+      overflow: auto;
+      max-height: 67%;
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 24%;
+  }
+  /* .patient-info{
+    /* display: flex;
+      flex-direction: column;
+      overflow: auto;
+      max-height: 68%;
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      font-size: 18px;
+      top: 16%; */
+ 
+  .patient-answer-name{
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 14%;
+    text-align: center;
+    background: #fff7f745;
+    border-radius: 10px;
+    padding: 10px;
+    color: #0b034b9c;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Verdana, Geneva, sans-serif;
+    overflow: hidden;
+    max-height: 50px;
+  }
+  
+  .patient-answer{
+    /* background: #fff7f745; */
+    margin-bottom: 20px;
+    /* border-bottom: 1px solid #bc7ce936; */
+    color: #0b034b9c;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, sans-serif;
+  }
+  .question{
+    font-weight: 500;
+   
+    /* height: 48px;
+    width: 90%;
+    border-radius: 10px;
+   align-items: center;
+    display: flex;
+    margin-top: 10px;
+    font-size: 19px;
+    justify-content:start;
+    background: #ffffffb0; */
+  }
+  
+  .answer{
+    margin-bottom:5px;
+    /* width: 90%;
+    height: 48px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    font-size: 17px;
+    background: #fff7f745;
+    justify-content:end;
+    text-justify: kashida; */
+  }
+  
+  .answer-component{
+    /* margin-top: 30px; */
+    display: flex;
+      flex-direction: column;
+      overflow: auto;
+      max-height: 54%;
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      font-size: 18px;
+      top: 26%;
+  }
+  
+  .high-priority {
+    color: #d90000;
+  }
+  .medium-priority {
+    color: #c98401;
+  }
+  .low-priority {
+    color: #08954e;
+  }
+  .results-view-button:hover {
+    opacity: 0.6;
+  }
+  
+  .results-view-button:focus {
+    background-color: transparent;
+    color: rgb(37, 32, 117);
+    border-color: rgb(37, 32, 117);
+  }
+  
