@@ -59,10 +59,6 @@ export const ResultsView = (props) => {
   const OpenedInfo = (props) => {
     const { patient, index } = props
 
-    // patient.answers.map((q, index) => {console.log(q)
-    //   console.log(questions[index].question)
-    //   console.log(questions[index].answer[q])
-    // })
     return (<>
       <div className="patient-info">
         <div className="patient-answer-name">Результаты опроса пациента: {patient.name} </div>
@@ -109,17 +105,6 @@ export const ResultsView = (props) => {
     <>
       {selectedPatient === -1 && (
         <>
-        {/* {showPatient !== -1 && (
-        <div>
-          <table>
-            <tbody>
-              {
-                <ChoosenListField patient={list[showPatient]} index={showPatient} key={`un-${showPatient+1}`}/>
-              }
-            </tbody>
-          </table>
-        </div>
-          )} */}
         <div className="choosen-patient ">
         Выберите пациента для просмотра данных:
         </div>

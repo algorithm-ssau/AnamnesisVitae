@@ -92,16 +92,6 @@
       right: 12%;
       top: 24%;
   }
-  /* .patient-info{
-    /* display: flex;
-      flex-direction: column;
-      overflow: auto;
-      max-height: 68%;
-      position: absolute;
-      left: 15%;
-      right: 15%;
-      font-size: 18px;
-      top: 16%; */
  
   .patient-answer-name{
     position: absolute;
@@ -131,30 +121,10 @@
   }
   .question{
     font-weight: 500;
-   
-    /* height: 48px;
-    width: 90%;
-    border-radius: 10px;
-   align-items: center;
-    display: flex;
-    margin-top: 10px;
-    font-size: 19px;
-    justify-content:start;
-    background: #ffffffb0; */
   }
   
   .answer{
     margin-bottom:5px;
-    /* width: 90%;
-    height: 48px;
-    border-radius: 10px;
-    align-items: center;
-    display: flex;
-    margin-top: 10px;
-    font-size: 17px;
-    background: #fff7f745;
-    justify-content:end;
-    text-justify: kashida; */
   }
   
   .answer-component{
