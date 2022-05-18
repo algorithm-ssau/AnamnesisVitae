@@ -36,7 +36,7 @@ export const ResultsView = (props) => {
           <button
             className="results-view-button"
             onClick={() => {
-              setSelectedPatient(index)
+              setSelectedPatient(index)}}
           >
             Просмотр результатов
           </button>
