@@ -31,6 +31,25 @@ const auth = useContext(AuthContext)
         return null
     }
     }
+
+    const lupa = async () => {
+        try {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/api/getName');
+            xhr.send();
+            console.log(xhr)
+            if (xhr.status != 200) {
+                // обработать ошибку
+                alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+            } else {
+                // вывести результат
+                alert( xhr.responseText ); // responseText -- текст ответа.
+            }
+        } catch (error) {
+            return null
+        }
+        }
+
     
     useEffect(() => {
         if (window === 1)
@@ -64,6 +83,7 @@ switch (window) {
                         <li><a onClick={() => {setWindow(1)}} className="navbar-vitae-a-white-active">Результаты</a></li>
                         <li><a onClick={() => {setWindow(2)}} className="navbar-vitae-a-black-passive">Профиль</a></li>
                         <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
+                        <li><button onClick={lupa} className="navbar-vitae-a-white-active">Справка</button></li>
                         <li><LogoutText/></li>
                     </ul>
                 </div>
