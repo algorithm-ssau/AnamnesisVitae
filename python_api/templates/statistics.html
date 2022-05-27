@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Статистика</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Газ', 'Объём'],
+     ['Прошло',     {{passed}}],
+     ['Не прошло', {{not_passed}}]
+    ]);
+    var options = {
+     title: 'Процент прошедших тест',
+     is3D: true,
+     backgroundColor: "#CCBBF6",
+     pieResidueSliceLabel: 'Остальное'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('air'));
+     chart.draw(data, options);
+   }
+  </script>
+ </head>
+    <body class="root">        
+        <div class="content-box-profile">
+            <div class="stat ">
+                Статистика
+            </div>
+            <div class="diag_box">
+                <div id="air" class="diag" ></div>
+            </div>            
+        </div>
+    </body>
+</html>
