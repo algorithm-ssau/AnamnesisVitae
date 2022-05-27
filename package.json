@@ -7,7 +7,7 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "frontend": "npm run start --prefix frontend",
-    "dev-anamnesis-vitae": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev-anamnesis-vitae": "concurrently \"npm run server\" \"npm run frontend\" \"python python_api/main.py\""
   },
   "repository": {
     "type": "git",
