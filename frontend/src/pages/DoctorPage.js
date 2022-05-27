@@ -35,7 +35,7 @@ const auth = useContext(AuthContext)
     const lupa = async () => {
         try {
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/api/getName');
+            xhr.open('GET', '/about');
             xhr.send();
             console.log(xhr)
             if (xhr.status != 200) {
@@ -83,7 +83,7 @@ switch (window) {
                         <li><a onClick={() => {setWindow(1)}} className="navbar-vitae-a-white-active">Результаты</a></li>
                         <li><a onClick={() => {setWindow(2)}} className="navbar-vitae-a-black-passive">Профиль</a></li>
                         <li><a onClick={() => {setWindow(3)}} className="navbar-vitae-a-white-active">Справка</a></li>
-                        <li><button onClick={lupa} className="navbar-vitae-a-white-active">Справка</button></li>
+                        <li><a href="http://localhost:8080/about">Справка</a></li>
                         <li><LogoutText/></li>
                     </ul>
                 </div>
