@@ -4,7 +4,6 @@ import { patientList } from "../utils/icons/PatientsList"
 
 export const ResultsView = (props) => {
   const { patients } = props
-  const [showPatient, setShowPatient] = useState(-1)
   const [selectedPatient, setSelectedPatient] = useState(-1)
   const [list, setList] = useState(patientList(patients.patients))
 
@@ -21,25 +20,6 @@ export const ResultsView = (props) => {
         <td className="patient-name row-elements">{patient.name}</td>
         <td className="patient-status ">
           {patient.checked ? "Просмотренный результат" : "Новый результат"}
-        </td>
-      </tr>
-    )
-  }
-
-  const ChoosenListField = (props) => {
-    const { patient, index } = props
-    return (
-      <tr className="choosen-patient-row " onClick={()=>setShowPatient(-1)}>
-        <td className="patient-num ">{index+1}</td>
-        <td className="patient-name row-elements">{patient.name}</td>
-        <td className="patient-selection">
-          <button
-            className="results-view-button"
-            onClick={() => {
-              setSelectedPatient(index)}}
-          >
-            Просмотр результатов
-          </button>
         </td>
       </tr>
     )

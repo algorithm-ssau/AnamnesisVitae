@@ -1,0 +1,48 @@
+.profile-box {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  margin-left: 15%;
+  margin-top: 6%;
+  width: 30%;
+  color: #68317f;
+}
+
+.profile-logo {
+  margin-left: 10%;
+  margin-top: 30%;
+}
+
+.profile-text {
+  margin-top: 2rem;
+  font-size: 22px;
+}
+
+.profile-input-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-input-field {
+  font-size: 40px;
+  height: 3rem;
+  position: relative;
+  color: #68317f !important;
+}
+
+.profile-enter-button {
+  margin-top: 16%;
+  margin-left: 46%;
+
+  height: 48px;
+  width: 150px;
+  color: #68317f;
+  font-size: 18px;
+  border: 2px solid;
+  border-color: rgb(167 100 194);
+  background: none;
+  border-radius: 10px;
+}

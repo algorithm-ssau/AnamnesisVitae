@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/AuthContext";
-
+import '../styles/AuthorizationPage.css';
 // info: need to add 'disable' to checkboxes, 
 // add info from checkboxes to api request
 // chamge checkboxes colors
@@ -64,7 +64,7 @@ export const AuthorizationPage = () => {
             <div
               className="modal-container"
               id="modal-container">
-              <h3>Выберите тип аккаунта</h3>
+              <div className="chooseAccountTipe-text">Выберите тип аккаунта:</div>
               <div className="account-type">
                 <label>
                   <input type="checkbox" className="filled-in" checked={checked===false} onChange={async () => {
@@ -72,7 +72,7 @@ export const AuthorizationPage = () => {
                       input.accountType = false
                       await changeHandler
                   }}/>
-                    <span>Пациент</span>
+                    <span className="accountType">Пациент</span>
                 </label>
                   <label>
                     <input type="checkbox" className="filled-in" checked={checked===true} onChange={async () => {
@@ -80,7 +80,7 @@ export const AuthorizationPage = () => {
                       input.accountType = true
                       await changeHandler
                   }}/>
-                      <span>Врач</span>
+                      <span className="accountType">Врач</span>
                   </label>
                 </div>
                 <button

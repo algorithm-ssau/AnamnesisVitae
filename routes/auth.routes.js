@@ -186,6 +186,30 @@ router.post('/login',
         }
     });
 
+    router.post("/profileData", auth, async (req, res) => {
+        try {
+           
+            const user = await User.findById(req.user.userId);
+
+            if (!user || user.accountType === true) {
+                return response
+                    .status(400)
+                    .json({ message: "Ошибка входа/типа аккаунта" });
+            }
+
+            console.log(user)
+            if (user.name !== " ") {
+                const name = user.name.split(" ")[0]
+                const surname = user.name.split(" ")[1]
+                res.json({ name: name, surname: surname });
+            }
+            else res.json({ name: user.name,  message: "Данных нет" });
+
+            
+        } catch (e) {
+            res.status(500).json({ message: "Что-то пошло не так" });
+        }
+    });
 
 
 module.exports = router
