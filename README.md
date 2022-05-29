@@ -25,6 +25,9 @@ npm install --global yarn
 ```
 - Установите необходимые зависимости набором команд: 
 ```shell
+pip install flask
+pip install pymongo
+pip install "pymongo[srv]"
 yarn install
 cd frontend
 yarn install
