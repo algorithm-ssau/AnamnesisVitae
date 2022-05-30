@@ -46,4 +46,10 @@ dev-anamnesis-vitae
 
 - В файле `Package.json` корневого каталога в блоке `scripts` содержится набор необходимых скриптов, указанных на рисунке и предназначенных для отдельного запуска сервера, клиентской части и всего приложения целиком
 
-![image](https://user-images.githubusercontent.com/63020967/166870552-233d37ee-bb65-4cec-9fcd-53868ffb8c72.png)
+![image](https://user-images.githubusercontent.com/63020967/171048997-e05bcef1-af93-4843-b4b4-b695c825b783.png)
+
+<h2 align="center"> Сайт приложения</h2> 
+<br>
+- Клиентская часть приложения развернута по ссылке: https://anamnesis-vitae.netlify.app/
+- Back-end часть приложения развернута по ссылке: https://anamnesis-vitae.herokuapp.com/
+<br>
