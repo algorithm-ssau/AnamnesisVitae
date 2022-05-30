@@ -50,6 +50,8 @@ dev-anamnesis-vitae
 
 <h2 align="center"> Сайт приложения</h2> 
 <br>
-- Клиентская часть приложения развернута по ссылке: https://anamnesis-vitae.netlify.app/
-- Back-end часть приложения развернута по ссылке: https://anamnesis-vitae.herokuapp.com/
+ Клиентская часть приложения развернута по ссылке: https://anamnesis-vitae.netlify.app/
+<br>
+<br>
+ Back-end часть приложения развернута по ссылке: https://anamnesis-vitae.herokuapp.com/
 <br>
